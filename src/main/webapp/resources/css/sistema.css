@@ -17,23 +17,23 @@ header {
 }
 
 header>div {
-	margin-left: 8px
+	margin-left: 8px;
 }
 
 #conteudo {
-	padding: 0px 8px
+	padding: 0px 8px;
 }
 
 footer {
 	padding: 0px 8px;
-	margin-bottom: 10px
+	margin-bottom: 10px;
 }
 
 h1 {
 	font-size: 24px;
 	font-weight: 500;
 	padding: 0px;
-	margin: 0px
+	margin: 0px;
 }
 
 #login-dialog {
@@ -47,15 +47,23 @@ h1 {
 	border-radius: 8px;
 	border: 1px solid #ccc;
 	margin-top: 8px;
-	padding: 10px
+	padding: 10px;
 }
 
 .rotulo {
-	width: 150px
+	width: 150px;
 }
 
 .ui-panelgrid td {
-	height: 34px
+	height: 34px;
+}
+
+.panel-sem-bordas tr{
+	border: none !important;
+}
+
+.panel-sem-bordas td{
+	border-style: none !important;
 }
 
 .ajax-status {
@@ -63,5 +71,5 @@ h1 {
 	top: 55px;
 	right: 10px;
 	width: 35px;
-	height: 35px
+	height: 35px;
 }
