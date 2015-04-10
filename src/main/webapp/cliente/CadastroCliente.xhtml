@@ -8,44 +8,46 @@
 	<ui:define name="titulo">Novo Cliente</ui:define>
 
 	<ui:define name="corpo">
-		<h1>Novo Produto</h1>
+		<h:form>
+			<h1>Novo Produto</h1>
 
-		<h:outputLink value="../Home.xhtml">Home</h:outputLink>
+			<h:outputLink value="../Home.xhtml">Home</h:outputLink>
 
-		<p:toolbar style="margin-top: 20px">
-			<p:toolbarGroup>
-				<p:button value="Novo" outcome="/cliente/CadastroCliente" />
-				<p:commandButton value="Salvar" id="botaoSalvar" />
-			</p:toolbarGroup>
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:button value="Novo" outcome="/cliente/CadastroCliente" />
+					<p:commandButton value="Salvar" id="botaoSalvar" />
+				</p:toolbarGroup>
 
-			<p:toolbarGroup align="right">
-				<p:button value="Pesquisa" />
-			</p:toolbarGroup>
-		</p:toolbar>
+				<p:toolbarGroup align="right">
+					<p:button value="Pesquisa" />
+				</p:toolbarGroup>
+			</p:toolbar>
 
-		<p:panelGrid columns="2" id="painel"
-			style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo"
-			styleClass="panel-sem-bordas">
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo"
+				styleClass="panel-sem-bordas">
 
-			<p:outputLabel value="Nome:" for="nome" />
-			<p:inputText id="nome" size="60" maxlength="80" required="true" />
+				<p:outputLabel value="Nome:" for="nome" />
+				<p:inputText id="nome" size="60" maxlength="80" required="true" />
 
-			<p:outputLabel value="Tipo:" for="tipo" />
-			<p:selectOneRadio id="tipo" required="true">
-				<f:selectItem itemLabel="Física" />
-				<f:selectItem itemLabel="Jurídica" />
-			</p:selectOneRadio>
+				<p:outputLabel value="Tipo:" for="tipo" />
+				<p:selectOneRadio id="tipo" required="true">
+					<f:selectItem itemLabel="Física" />
+					<f:selectItem itemLabel="Jurídica" />
+				</p:selectOneRadio>
 
-			<p:outputLabel value="CNPJ:" for="cnpj" />
-			<p:inputMask id="cnpj" size="20" mask="99.999.999/9999-99" />
+				<p:outputLabel value="CNPJ:" for="cnpj" />
+				<p:inputMask id="cnpj" size="20" mask="99.999.999/9999-99" />
 
-			<p:outputLabel value="CPF" for="cpf" />
-			<p:inputMask id="cpf" size="20" mask="999.999.999-99" />
+				<p:outputLabel value="CPF" for="cpf" />
+				<p:inputMask id="cpf" size="20" mask="999.999.999-99" />
 
 
-			<p:outputLabel value="E-mail:" for="email" />
-			<p:inputText id="email" size="50" maxlength="50" />
-		</p:panelGrid>
+				<p:outputLabel value="E-mail:" for="email" />
+				<p:inputText id="email" size="50" maxlength="50" />
+			</p:panelGrid>
+		</h:form>
 	</ui:define>
 
 </ui:composition>
