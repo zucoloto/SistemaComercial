@@ -22,4 +22,10 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 
+	<!-- Primefaces - tema -->
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>#{temaBean.temaSelecionado}</param-value>
+	</context-param>
+
 </web-app>

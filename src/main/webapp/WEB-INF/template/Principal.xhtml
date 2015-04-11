@@ -38,6 +38,13 @@
 	<p:separator style="margin-top: 20px" />
 
 	<footer>
+		<h:form>
+			<p:themeSwitcher value="#{temaBean.temaSelecionado}">
+				<f:selectItems value="#{temaBean.temasDisponiveis}" />
+				<p:ajax />
+			</p:themeSwitcher>
+		</h:form>
+		
 		Sistema Comercial - Copyright © 2015 - <a
 			href="mailto:zucoloto.com@gmail.com">Alessandro Zucoloto</a> <br />
 		Todos os direitos reservados. Leia nossa Política de privacidade e
