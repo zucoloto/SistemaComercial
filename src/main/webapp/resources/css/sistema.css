@@ -58,11 +58,11 @@ h1 {
 	height: 34px;
 }
 
-.panel-sem-bordas tr{
+.panel-sem-bordas tr {
 	border: none !important;
 }
 
-.panel-sem-bordas td{
+.panel-sem-bordas td {
 	border-style: none !important;
 }
 
@@ -73,3 +73,25 @@ h1 {
 	width: 35px;
 	height: 35px;
 }
+
+.produto-tabela input {
+	width: 99%;
+}
+
+/* Customiza TabView - início */
+.ui-tabs .ui-tabs-panel {
+	padding: 0.5em 0.2em !important;
+}
+
+.ui-tabs {
+	padding: 0px !important;
+}
+
+.ui-tabs .ui-tabs-nav {
+	margin: -1px !important;
+}
+
+.ui-tabs.ui-tabs-top>.ui-tabs-nav {
+	padding: 0px !important;
+}
+/* Customiza TabView - fim */
