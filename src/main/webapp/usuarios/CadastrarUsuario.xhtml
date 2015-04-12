@@ -19,7 +19,7 @@
 			</p:toolbarGroup>
 
 			<p:toolbarGroup align="right">
-				<p:button value="Pesquisa" outcome="/usuarios/PesquisarUsuario"/>
+				<p:button value="Pesquisa" outcome="/usuarios/PesquisarUsuario" />
 			</p:toolbarGroup>
 		</p:toolbar>
 
@@ -38,8 +38,30 @@
 
 			<h:outputLabel value="Confirmar Senha:" for="confirmarSenha" />
 			<p:password id="confirmarSenha" required="true" />
-
 		</p:panelGrid>
+
+		<p:panelGrid columns="2" style="margin-top: 20px"
+			styleClass="panel-sem-bordas" cellpadding="5">
+			<p:selectOneMenu>
+				<f:selectItem itemLabel="Selecione o grupo..." />
+			</p:selectOneMenu>
+
+			<p:commandButton value="Adicionar grupo" />
+		</p:panelGrid>
+
+		<p:dataTable value="#{pesquisaClientesBean.produtosFiltrados}"
+			var="grupo" style="margin-top: 5px"
+			emptyMessage="Nenhum produto encontrado!" rows="5" paginator="true"
+			paginatorAlwaysVisible="false" paginatorPosition="bottom">
+
+			<p:column headerText="Grupo">
+				<h:outputText value="Administrador" />
+			</p:column>
+
+			<p:column headerText="Ações" style="text-align: center; width: 50px">
+				<p:commandButton icon="ui-icon-trash" title="Excluir" />
+			</p:column>
+		</p:dataTable>
 	</ui:define>
 
 </ui:composition>
