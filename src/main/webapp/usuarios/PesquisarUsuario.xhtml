@@ -1,0 +1,57 @@
+<ui:composition template="/WEB-INF/template/Principal.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Pesquisar Usuários</ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<h1>Pesquisar Usuários</h1>
+
+			<h:outputLink value="../Home.xhtml">Home</h:outputLink>
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton value="Pesquisar" id="botaoPesquisar" />
+				</p:toolbarGroup>
+
+				<p:toolbarGroup align="right">
+					<p:button value="Novo" outcome="/usuarios/CadastrarUsuario" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo"
+				styleClass="panel-sem-bordas">
+
+				<p:outputLabel value="Nome:" for="nome" />
+				<p:inputText id="nome" size="60" />
+			</p:panelGrid>
+
+			<p:dataTable id="pedidoTable"
+				value="#{pesquisaUsuariosBean.produtosFiltrados}" var="usuario"
+				style="margin-top: 20px" emptyMessage="Nenhum produto encontrado!"
+				rows="20" paginator="true" paginatorAlwaysVisible="false"
+				paginatorPosition="bottom">
+
+				<p:column headerText="Nome">
+					<h:outputText value="Alessandro Zucoloto Filho" />
+				</p:column>
+
+				<p:column headerText="E-mail">
+					<h:outputText value="alessandro.zucoloto@gmail.com" />
+				</p:column>
+
+				<p:column headerText="Ações"
+					style="text-align: center; width: 100px">
+					<p:button icon="ui-icon-pencil" title="Editar" />
+					<p:commandButton icon="ui-icon-trash" title="Excluir" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
