@@ -23,11 +23,37 @@
 	</p:ajaxStatus>
 
 	<header>
-		<div>
-			<h:link>
+		<div style="float: left">
+			<h:link outcome="/Home">
 				<h:graphicImage library="images" name="logo.png" />
 			</h:link>
 		</div>
+
+		<div style="float: right; margin-right: 100px; margin-top: 5px">
+			<span
+				style="float: left; height: 30px; line-height: 30px; margin-right: 60px">
+				Olá USUÁRIO! </span>
+
+			<h:form style="display: inline-block">
+				<p:menubar styleClass="menu-sistema">
+					<p:menuitem value="Home" outcome="/Home" />
+					<p:submenu label="Cadastros">
+						<p:menuitem value="Clientes" outcome="/clientes/CadastrarCliente" />
+						<p:menuitem value="Usuários" outcome="/usuarios/CadastrarUsuario" />
+						<p:separator />
+						<p:menuitem value="Categoria" />
+						<p:menuitem value="Produtos" outcome="/produtos/PesquisarProduto" />
+					</p:submenu>
+					<p:submenu label="Pedidos">
+						<p:menuitem value="Novo" outcome="/pedidos/CadastrarPedido" />
+						<p:menuitem value="Pesquisar" outcome="/pedidos/PesquisarPedido" />
+					</p:submenu>
+					<p:menuitem value="Sair" />
+				</p:menubar>
+			</h:form>
+		</div>
+
+		<div style="clear: both"></div>
 	</header>
 
 
