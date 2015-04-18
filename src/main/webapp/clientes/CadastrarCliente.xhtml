@@ -46,11 +46,13 @@
 				<p:inputText id="email" size="50" maxlength="50" />
 			</p:panelGrid>
 
-			<p:commandButton value="Adicionar endereço" style="margin-top: 20px" />
+			<p:commandButton value="Adicionar endereço" style="margin-top: 20px"
+				onclick="PF('inclusaoEndereco').show(); return false;" />
 
-			<p:dataTable value="#{pesquisaClientesBean.produtosFiltrados}"
-				var="endereco" style="margin-top: 5px"
-				emptyMessage="Nenhum endereço encontrado!" rows="2">
+			<p:dataTable id="enderecoTable"
+				value="#{pesquisaClientesBean.produtosFiltrados}" var="endereco"
+				style="margin-top: 5px" emptyMessage="Nenhum endereço encontrado!"
+				rows="2">
 
 				<p:column headerText="Logradouro">
 					<h:outputText value="SQN 306 - Bloco 'B'" />
@@ -75,9 +77,52 @@
 				<p:column headerText="Ações"
 					style="text-align: center; width: 100px">
 					<p:button icon="ui-icon-pencil" title="Editar" />
-					<p:commandButton icon="ui-icon-trash" title="Excluir" />
+					<p:commandButton icon="ui-icon-trash" title="Excluir"
+						oncomplete="PF('confirmacaoExclusao').show();" />
 				</p:column>
 			</p:dataTable>
+
+			<p:confirmDialog header="Exclusão de endereço"
+				message="Tem certeza que deseja excluir o endereço?"
+				widgetVar="confirmacaoExclusao">
+				<p:button value="Não" icon="ui-icon-close"
+					onclick="PF('confirmacaoExclusao').hide(); return false;" />
+				<p:commandButton value="Sim" icon="ui-icon-check"
+					oncomplete="PF('confirmacaoExclusao').hide();" />
+			</p:confirmDialog>
+
+			<p:dialog header="Incluisão de endereço" widgetVar="inclusaoEndereco"
+				modal="true" resizable="false">
+				<h:panelGroup id="inclusaoPanel">
+					<p:messages />
+
+					<h:panelGrid columns="2" style="width: 100%; margin-top: 0px"
+						columnClasses="rotulo, campo" styleClass="panel-sem-bordas">
+						<p:outputLabel value="Logradouro:" />
+						<p:inputText size="60" maxlength="80" />
+
+						<p:outputLabel value="Número:" />
+						<p:inputText size="10" maxlength="10" />
+
+						<p:outputLabel value="Complemento" />
+						<p:inputText size="30" maxlength="30" />
+
+						<p:outputLabel value="CEP" />
+						<p:inputMask size="10" maxlength="8" mask="99999-99" />
+
+						<p:outputLabel value="Cidade" />
+						<h:panelGroup>
+							<p:inputText size="40" maxlength="40" />
+							<p:outputLabel value="UF" style="margin-left: 20px" />
+							<p:inputText size="5" maxlength="2" style="margin-left: 10px" />
+						</h:panelGroup>
+					</h:panelGrid>
+
+					<p:commandButton value="Incluir" action="#"
+						update="enderecoTable inclusaoPanel" icon="ui-icon-check"
+						oncomplete="PF('inclusaoEndereco').hide();" />
+				</h:panelGroup>
+			</p:dialog>
 		</h:form>
 	</ui:define>
 
