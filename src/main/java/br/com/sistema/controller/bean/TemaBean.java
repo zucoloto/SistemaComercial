@@ -16,7 +16,7 @@ public class TemaBean implements Serializable {
 	private String temaSelecionado = "bootstrap";
 
 	public List<String> getTemasDisponiveis() {
-		return Arrays.asList("afterdark", "afterwork", "aristo", "bootstrap", "vader");
+		return Arrays.asList("afterdark", "afterwork", "aristo", "vader");
 	}
 
 	public String getTemaSelecionado() {

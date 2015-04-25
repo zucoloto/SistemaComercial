@@ -12,14 +12,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
 import javax.faces.event.ExceptionQueuedEventContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import br.com.sistema.service.NegocioException;
 
 public class JsfExceptionHandler extends ExceptionHandlerWrapper {
-
-	private static Log log = LogFactory.getLog(JsfExceptionHandler.class);
 
 	private ExceptionHandler wrapped;
 
@@ -56,8 +51,6 @@ public class JsfExceptionHandler extends ExceptionHandlerWrapper {
 					FacesUtil.addErrorMessage(negocioException.getMessage());
 				} else {
 					handled = true;
-					log.error("Erro de sistema: " + exception.getMessage(),
-							exception);
 					redirect("/Erro.xhtml");
 				}
 			} finally {
