@@ -3,11 +3,11 @@ package br.com.sistema.controller.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class PesquisaProdutosBean {
 
 	private List<Integer> produtosFiltrados;
