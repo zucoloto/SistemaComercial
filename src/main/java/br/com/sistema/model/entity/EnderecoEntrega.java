@@ -2,11 +2,14 @@ package br.com.sistema.model.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class EnderecoEntrega implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String logadouro;
+	private String logradouro;
 	private String numero;
 	private String complemento;
 	private String cidade;
@@ -14,12 +17,12 @@ public class EnderecoEntrega implements Serializable {
 	private String cep;
 	private Cliente cliente;
 
-	public String getLogadouro() {
-		return logadouro;
+	public String getLogradouro() {
+		return logradouro;
 	}
 
-	public void setLogadouro(String logadouro) {
-		this.logadouro = logadouro;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
 	public String getNumero() {

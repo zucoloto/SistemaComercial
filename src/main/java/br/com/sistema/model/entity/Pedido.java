@@ -6,22 +6,58 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "pedido")
 public class Pedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_criacao")
 	private Date dataCriacao;
+	@Column(columnDefinition = "text")
 	private String observacao;
-	private Date dateEntrega;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_entrega")
+	private Date dataEntrega;
+	@Column(name = "valor_frete")
 	private BigDecimal valorFrete;
+	@Column(name = "valor_desconto")
 	private BigDecimal valorDesconto;
+	@Column(name = "valor_total")
 	private BigDecimal valorTotal;
+	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "forma_pagamento")
 	private FormaPagamento formaPagamento;
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
 	private Usuario vendedor;
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	@Embedded
 	private EnderecoEntrega enderecoEntrega;
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemPedido> itens = new ArrayList<>();
 
 	public Long getId() {
@@ -48,12 +84,12 @@ public class Pedido implements Serializable {
 		this.observacao = observacao;
 	}
 
-	public Date getDateEntrega() {
-		return dateEntrega;
+	public Date getDataEntrega() {
+		return dataEntrega;
 	}
 
-	public void setDateEntrega(Date dateEntrega) {
-		this.dateEntrega = dateEntrega;
+	public void setDataEntrega(Date dataEntrega) {
+		this.dataEntrega = dataEntrega;
 	}
 
 	public BigDecimal getValorFrete() {

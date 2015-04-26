@@ -9,7 +9,7 @@ import br.com.sistema.model.entity.Cliente;
 import br.com.sistema.model.entity.EnderecoCliente;
 import br.com.sistema.model.entity.TipoPessoa;
 
-public class Teste {
+public class ClienteEndereco {
 
 	public static void main(String[] args) {
 		EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("SistemaComercialPU");

@@ -3,15 +3,32 @@ package br.com.sistema.model.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "produto")
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Column(name = "nome_produto")
 	private String nomeProduto;
 	private String sku;
+	@Column(name = "valor_unitario")
 	private BigDecimal valorUnitario;
+	@Column(name = "quantidade_estoque")
 	private Integer quantidadeEstoque;
+	@ManyToOne
+	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
 	public Long getId() {
