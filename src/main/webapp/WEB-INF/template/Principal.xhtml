@@ -36,23 +36,23 @@
 
 			<h:form style="display: inline-block">
 				<p:menubar styleClass="menu-sistema">
-					<p:menuitem value="Home" outcome="/Home" />
-					<p:submenu label="Cadastros">
+					<p:menuitem value="Home" outcome="/Home" icon="ui-icon-home" />
+					<p:submenu label="Cadastros" icon="ui-icon-plus">
 						<p:menuitem value="Clientes" outcome="/clientes/CadastrarCliente" />
 						<p:menuitem value="Usuários" outcome="/usuarios/CadastrarUsuario" />
 						<p:separator />
 						<p:menuitem value="Categoria" />
 						<p:menuitem value="Produtos" outcome="/produtos/PesquisarProduto" />
 					</p:submenu>
-					<p:submenu label="Pedidos">
+					<p:submenu label="Pedidos" icon="ui-icon-plusthick">
 						<p:menuitem value="Novo" outcome="/pedidos/CadastrarPedido" />
 						<p:menuitem value="Pesquisar" outcome="/pedidos/PesquisarPedido" />
 					</p:submenu>
-					<p:submenu label="Pesquisas">
+					<p:submenu label="Pesquisas" icon="ui-icon-search">
 						<p:menuitem value="Clientes" outcome="/clientes/PesquisarCliente" />
 						<p:menuitem value="Usuários" outcome="/usuarios/PesquisarUsuario" />
 					</p:submenu>
-					<p:menuitem value="Sair" />
+					<p:menuitem value="Sair" icon="ui-icon-close" />
 				</p:menubar>
 			</h:form>
 		</div>
