@@ -50,10 +50,10 @@ public class Pedido implements Serializable {
 	@Column(name = "forma_pagamento")
 	private FormaPagamento formaPagamento;
 	@ManyToOne
-	@JoinColumn(name = "usuario_id")
+	@JoinColumn(name = "vendedor_id", nullable = false)
 	private Usuario vendedor;
 	@ManyToOne
-	@JoinColumn(name = "cliente_id")
+	@JoinColumn(name = "cliente_id", nullable = false)
 	private Cliente cliente;
 	@Embedded
 	private EnderecoEntrega enderecoEntrega;

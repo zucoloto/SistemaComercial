@@ -12,31 +12,32 @@ import br.com.sistema.model.entity.TipoPessoa;
 public class ClienteEndereco {
 
 	public static void main(String[] args) {
-		EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("SistemaComercialPU");
+		EntityManagerFactory managerFactory = Persistence
+				.createEntityManagerFactory("SistemaComercialPU");
 		EntityManager manager = managerFactory.createEntityManager();
-		
+
 		EntityTransaction trx = manager.getTransaction();
 		trx.begin();
-		
+
 		Cliente cliente = new Cliente();
-		cliente.setNomeCliente("Joao das Couves2");
-		cliente.setEmail("couves@gmail.com");
+		cliente.setNomeCliente("BIGBOX");
+		cliente.setEmail("bigbox@gmail.com");
 		cliente.setDocumentoReceitaFederal("034");
-		cliente.setTipo(TipoPessoa.FISICA);
-		
+		cliente.setTipo(TipoPessoa.JURIDICA);
+
 		EnderecoCliente endereco = new EnderecoCliente();
-		endereco.setLogradouro("Rua");
-		endereco.setNumero("1");
-		endereco.setComplemento("Ap");
-		endereco.setCidade("BSA");
+		endereco.setLogradouro("SQCN 105/106");
+		endereco.setNumero("s/nº");
+		endereco.setComplemento("Bloco A");
+		endereco.setCidade("Brasília");
 		endereco.setUf("DF");
-		endereco.setCep("70");
+		endereco.setCep("70740-000");
 		endereco.setCliente(cliente);
-		
+
 		cliente.getEnderecos().add(endereco);
-		
+
 		manager.persist(cliente);
-		
+
 		trx.commit();
 	}
 }

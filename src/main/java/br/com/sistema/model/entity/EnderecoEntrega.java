@@ -15,7 +15,6 @@ public class EnderecoEntrega implements Serializable {
 	private String cidade;
 	private String uf;
 	private String cep;
-	private Cliente cliente;
 
 	public String getLogradouro() {
 		return logradouro;
@@ -63,14 +62,6 @@ public class EnderecoEntrega implements Serializable {
 
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
 	}
 
 }

@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS usuario_grupo (
 CREATE TABLE IF NOT EXISTS categoria (
   id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   descricao VARCHAR(60) NOT NULL,
+  categoria_pai_id BIGINT(20),
   CONSTRAINT fk_categoria_categoria_pai FOREIGN KEY (categoria_pai_id) REFERENCES categoria (id)
 ) ENGINE=InnoDB;
 
@@ -58,7 +59,31 @@ CREATE TABLE IF NOT EXISTS produto (
   sku VARCHAR(20) NOT NULL UNIQUE KEY,
   valor_unitario DECIMAL(10,2) NOT NULL,
   quantidade_estoque INT(5) NOT NULL,
+  categoria_id BIGINT(20) NOT NULL,
   CONSTRAINT fk_produto_categoria FOREIGN KEY (categoria_id) REFERENCES categoria (id)
+) ENGINE=InnoDB;
+
+-- Estrutura da tabela 'pedido'
+CREATE TABLE IF NOT EXISTS pedido (
+  id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  data_criacao DATETIME NOT NULL,
+  observacao TEXT,
+  data_entrega DATE NOT NULL,
+  valor_frete DECIMAL(10,2) NOT NULL,
+  valor_desconto DECIMAL(10,2) NOT NULL,
+  valor_total DECIMAL(10,2) NOT NULL,
+  status VARCHAR(20) NOT NULL,
+  forma_pagamento VARCHAR(20) NOT NULL,
+  logradouro VARCHAR(150) NOT NULL,
+  numero VARCHAR(20) NOT NULL,
+  complemento VARCHAR(100),
+  cidade VARCHAR(70) NOT NULL,
+  uf VARCHAR(2) NOT NULL,
+  cep VARCHAR(9) NOT NULL,
+  vendedor_id BIGINT(20) NOT NULL,
+  cliente_id BIGINT(20) NOT NULL,
+  CONSTRAINT fk_pedito_usuario FOREIGN KEY (vendedor_id) REFERENCES usuario (id),
+  CONSTRAINT fk_pedito_cliente FOREIGN KEY (cliente_id) REFERENCES cliente (id)
 ) ENGINE=InnoDB;
 
 -- Estrutura da tabela 'item_pedido'
@@ -66,32 +91,8 @@ CREATE TABLE IF NOT EXISTS item_pedido (
   id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   quantidade INT(5) NOT NULL,
   valor_unitario DECIMAL(10,2) NOT NULL,
+  produto_id BIGINT(20) NOT NULL,
+  pedido_id BIGINT(20) NOT NULL,
   CONSTRAINT fk_item_pedito_produto FOREIGN KEY (produto_id) REFERENCES produto (id),
   CONSTRAINT fk_item_pedito_pedido FOREIGN KEY (pedido_id) REFERENCES pedido (id)
-) ENGINE=InnoDB;
-
--- Estrutura da tabela 'pedido'
-CREATE TABLE IF NOT EXISTS pedido (
-  id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  data_criacao DATE NOT NULL,
-  observacao VARCHAR(100),
-  data_entrega DATE NOT NULL,
-  valor_frete DECIMAL(10,2) NOT NULL,
-  valor_desconto DECIMAL(10,2) NOT NULL,
-  valor_total DECIMAL(10,2) NOT NULL,
-  status VARCHAR(20) NOT NULL,
-  forma_pagamento VARCHAR(20) NOT NULL,
-  CONSTRAINT fk_pedito_usuario FOREIGN KEY (vendedor_id) REFERENCES usuario (id),
-  CONSTRAINT fk_pedito_cliente FOREIGN KEY (cliente_id) REFERENCES cliente (id),
-  CONSTRAINT fk_pedito_endereco_entrega FOREIGN KEY (endereco_entrega_id) REFERENCES endereco_entrega (id)
-) ENGINE=InnoDB;
-
--- Estrutura da tabela 'endereco_entrega'
-CREATE TABLE IF NOT EXISTS endereco_entrega (
-  logradouro VARCHAR(150) NOT NULL,
-  numero VARCHAR(20) NOT NULL,
-  complemento VARCHAR(100),
-  cidade VARCHAR(70) NOT NULL,
-  uf VARCHAR(2) NOT NULL,
-  cep VARCHAR(9) NOT NULL
 ) ENGINE=InnoDB;

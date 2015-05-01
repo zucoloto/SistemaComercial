@@ -27,7 +27,7 @@ public class ItemPedido implements Serializable {
 	@JoinColumn(name = "produto_id")
 	private Produto produto;
 	@ManyToOne
-	@JoinColumn(name = "pedido_id")
+	@JoinColumn(name = "pedido_id", nullable = false)
 	private Pedido pedido;
 
 	public Long getId() {
