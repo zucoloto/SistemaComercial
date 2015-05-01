@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "pedido")
@@ -68,6 +69,7 @@ public class Pedido implements Serializable {
 		this.id = id;
 	}
 
+	@NotNull
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}
@@ -84,6 +86,7 @@ public class Pedido implements Serializable {
 		this.observacao = observacao;
 	}
 
+	@NotNull
 	public Date getDataEntrega() {
 		return dataEntrega;
 	}
@@ -92,6 +95,7 @@ public class Pedido implements Serializable {
 		this.dataEntrega = dataEntrega;
 	}
 
+	@NotNull
 	public BigDecimal getValorFrete() {
 		return valorFrete;
 	}
@@ -100,6 +104,7 @@ public class Pedido implements Serializable {
 		this.valorFrete = valorFrete;
 	}
 
+	@NotNull
 	public BigDecimal getValorDesconto() {
 		return valorDesconto;
 	}
@@ -108,6 +113,7 @@ public class Pedido implements Serializable {
 		this.valorDesconto = valorDesconto;
 	}
 
+	@NotNull
 	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
@@ -116,6 +122,7 @@ public class Pedido implements Serializable {
 		this.valorTotal = valorTotal;
 	}
 
+	@NotNull
 	public StatusPedido getStatus() {
 		return status;
 	}
@@ -124,6 +131,7 @@ public class Pedido implements Serializable {
 		this.status = status;
 	}
 
+	@NotNull
 	public FormaPagamento getFormaPagamento() {
 		return formaPagamento;
 	}
@@ -132,6 +140,7 @@ public class Pedido implements Serializable {
 		this.formaPagamento = formaPagamento;
 	}
 
+	@NotNull
 	public Usuario getVendedor() {
 		return vendedor;
 	}
@@ -140,6 +149,7 @@ public class Pedido implements Serializable {
 		this.vendedor = vendedor;
 	}
 
+	@NotNull
 	public Cliente getCliente() {
 		return cliente;
 	}

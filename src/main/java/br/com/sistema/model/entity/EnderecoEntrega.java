@@ -3,6 +3,9 @@ package br.com.sistema.model.entity;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Embeddable
 public class EnderecoEntrega implements Serializable {
@@ -16,6 +19,8 @@ public class EnderecoEntrega implements Serializable {
 	private String uf;
 	private String cep;
 
+	@NotBlank
+	@Size(max = 150)
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -24,6 +29,8 @@ public class EnderecoEntrega implements Serializable {
 		this.logradouro = logradouro;
 	}
 
+	@NotBlank
+	@Size(max = 20)
 	public String getNumero() {
 		return numero;
 	}
@@ -32,6 +39,7 @@ public class EnderecoEntrega implements Serializable {
 		this.numero = numero;
 	}
 
+	@Size(max = 100)
 	public String getComplemento() {
 		return complemento;
 	}
@@ -40,6 +48,8 @@ public class EnderecoEntrega implements Serializable {
 		this.complemento = complemento;
 	}
 
+	@NotBlank
+	@Size(max = 70)
 	public String getCidade() {
 		return cidade;
 	}
@@ -48,6 +58,8 @@ public class EnderecoEntrega implements Serializable {
 		this.cidade = cidade;
 	}
 
+	@NotBlank
+	@Size(max = 2)
 	public String getUf() {
 		return uf;
 	}
@@ -56,6 +68,8 @@ public class EnderecoEntrega implements Serializable {
 		this.uf = uf;
 	}
 
+	@NotBlank
+	@Size(max = 9)
 	public String getCep() {
 		return cep;
 	}

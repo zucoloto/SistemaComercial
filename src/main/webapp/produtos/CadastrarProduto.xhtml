@@ -30,10 +30,12 @@
 				styleClass="panel-sem-bordas">
 
 				<p:outputLabel value="SKU:" for="sku" />
-				<p:inputText id="sku" size="20" maxlength="20" />
+				<p:inputText id="sku" size="20" maxlength="20"
+					value="#{cadastroProdutoBean.produto.sku}" />
 
 				<p:outputLabel value="Nome:" for="nome" />
-				<p:inputText id="nome" size="60" maxlength="80" />
+				<p:inputText id="nome" size="60" maxlength="80"
+					value="#{cadastroProdutoBean.produto.nomeProduto}" />
 
 				<p:outputLabel value="Categoria:" for="categoria" />
 				<p:selectOneMenu id="categoria">
@@ -41,13 +43,17 @@
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Subcategoria:" for="subCategoria" />
-				<p:selectOneMenu id="subCategoria">
+				<p:selectOneMenu id="subCategoria"
+					value="#{cadastroProdutoBean.produto.categoria}">
 					<f:selectItem itemLabel="Selecione a subcategoria..." />
 				</p:selectOneMenu>
 
 				<p:outputLabel value="Valor unitário:" for="valorUnitario" />
 				<p:inputText id="valorUnitario" size="10" maxlength="10"
-					styleClass="moeda" />
+					styleClass="moeda"
+					value="#{cadastroProdutoBean.produto.valorUnitario}">
+					<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+				</p:inputText>
 
 				<p:outputLabel value="Estoque:" for="estoque" />
 				<p:inputText id="estoque" size="10" maxlength="5"
