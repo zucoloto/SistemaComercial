@@ -20,7 +20,6 @@ public class CadastroProdutoBean implements Serializable {
 	}
 
 	public void salvar() {
-		throw new RuntimeException("Teste de exceção.");
 	}
 
 	public Produto getProduto() {

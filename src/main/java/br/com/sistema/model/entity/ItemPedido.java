@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -53,6 +54,7 @@ public class ItemPedido implements Serializable {
 	}
 
 	@NotNull
+	@DecimalMin("0")
 	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}

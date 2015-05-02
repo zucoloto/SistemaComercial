@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -65,6 +66,7 @@ public class Produto implements Serializable {
 	}
 
 	@NotNull
+	@DecimalMin("0")
 	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
@@ -73,9 +75,9 @@ public class Produto implements Serializable {
 		this.valorUnitario = valorUnitario;
 	}
 
-	@NotNull
+	@NotNull(message = "é obrigatório")
 	@Min(0)
-	@Max(9999)
+	@Max(value = 9999, message = "tem um valor máximo de 9999")
 	public Integer getQuantidadeEstoque() {
 		return quantidadeEstoque;
 	}

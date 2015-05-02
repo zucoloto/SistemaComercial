@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -96,6 +97,7 @@ public class Pedido implements Serializable {
 	}
 
 	@NotNull
+	@DecimalMin("0")
 	public BigDecimal getValorFrete() {
 		return valorFrete;
 	}
@@ -105,6 +107,7 @@ public class Pedido implements Serializable {
 	}
 
 	@NotNull
+	@DecimalMin("0")
 	public BigDecimal getValorDesconto() {
 		return valorDesconto;
 	}
@@ -114,6 +117,7 @@ public class Pedido implements Serializable {
 	}
 
 	@NotNull
+	@DecimalMin("0")
 	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
