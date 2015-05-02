@@ -9,7 +9,6 @@ import javax.inject.Named;
 
 import br.com.sistema.model.entity.EnderecoEntrega;
 import br.com.sistema.model.entity.Pedido;
-import br.com.sistema.service.NegocioException;
 
 @Named
 @ViewScoped
@@ -30,13 +29,13 @@ public class CadastroPedidoBean implements Serializable {
 	public void salvar() {
 
 	}
- 
+
 	public Pedido getPedido() {
 		return pedido;
 	}
 
 	public List<Integer> getItens() {
 		return itens;
- 	}
+	}
 
 }

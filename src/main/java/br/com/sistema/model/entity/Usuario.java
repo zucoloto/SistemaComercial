@@ -13,6 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "usuario")
@@ -28,8 +32,7 @@ public class Usuario implements Serializable {
 	private String email;
 	private String senha;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "usuario_id"), 
-				inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "grupo_id"))
 	private List<Grupo> grupos = new ArrayList<>();
 
 	public Long getId() {
@@ -40,6 +43,8 @@ public class Usuario implements Serializable {
 		this.id = id;
 	}
 
+	@NotBlank
+	@Size(max = 100)
 	public String getNomeUsuario() {
 		return nomeUsuario;
 	}
@@ -48,6 +53,9 @@ public class Usuario implements Serializable {
 		this.nomeUsuario = nomeUsuario;
 	}
 
+	@NotBlank
+	@Email
+	@Size(max = 255)
 	public String getEmail() {
 		return email;
 	}
@@ -56,6 +64,8 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
+	@NotBlank
+	@Size(max = 20)
 	public String getSenha() {
 		return senha;
 	}

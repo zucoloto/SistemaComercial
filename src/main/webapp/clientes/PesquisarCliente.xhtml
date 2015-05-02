@@ -25,15 +25,15 @@
 				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo"
 				styleClass="panel-sem-bordas">
 
-				<p:outputLabel value="CPF/CNPJ:" />
+				<p:outputLabel value="CPF/CNPJ" />
 				<p:inputText size="20" />
 
-				<p:outputLabel value="Nome:" for="nome" />
+				<p:outputLabel value="Nome" for="nome" />
 				<p:inputText id="nome" size="60" />
 			</p:panelGrid>
 
 			<p:dataTable id="pedidoTable"
-				value="#{pesquisaClientesBean.produtosFiltrados}" var="cliente"
+				value="#{pesquisaClientesBean.clientesFiltrados}" var="cliente"
 				style="margin-top: 20px" emptyMessage="Nenhum produto encontrado!"
 				rows="20" paginator="true" paginatorAlwaysVisible="false"
 				paginatorPosition="bottom">

@@ -10,10 +10,13 @@
 	<ui:define name="corpo">
 		<h1>Novo Usuário</h1>
 
+		<p:messages autoUpdate="true" closable="true" />
+
 		<p:toolbar style="margin-top: 20px">
 			<p:toolbarGroup>
 				<p:button value="Novo" outcome="/usuarios/CadastrarUsuario" />
-				<p:commandButton value="Salvar" id="botaoSalvar" />
+				<p:commandButton value="Salvar" id="botaoSalvar"
+					action="#{cadastroUsuarioBean.salvar}" />
 			</p:toolbarGroup>
 
 			<p:toolbarGroup align="right">
@@ -25,17 +28,20 @@
 			style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo"
 			styleClass="panel-sem-bordas">
 
-			<p:outputLabel value="Nome:" for="nome" />
-			<p:inputText id="nome" size="60" maxlength="80" required="true" />
+			<p:outputLabel value="Nome" for="nome" />
+			<p:inputText id="nome" size="60" maxlength="100"
+				value="#{cadastroUsuarioBean.usuario.nomeUsuario}" />
 
-			<p:outputLabel value="E-mail:" for="email" />
-			<p:inputText id="email" size="50" maxlength="50" required="true" />
+			<p:outputLabel value="E-mail" for="email" />
+			<p:inputText id="email" size="60" maxlength="255"
+				value="#{cadastroUsuarioBean.usuario.email}" />
 
-			<h:outputLabel value="Senha:" for="senha" />
-			<p:password id="senha" match="confirmarSenha" required="true" />
+			<h:outputLabel value="Senha" for="senha" />
+			<p:password id="senha" match="confirmarSenha"
+				value="#{cadastroUsuarioBean.usuario.senha}" />
 
-			<h:outputLabel value="Confirmar Senha:" for="confirmarSenha" />
-			<p:password id="confirmarSenha" required="true" />
+			<h:outputLabel value="Confirmar Senha" for="confirmarSenha" />
+			<p:password id="confirmarSenha" />
 		</p:panelGrid>
 
 		<p:panelGrid columns="2" style="margin-top: 20px"
@@ -47,10 +53,10 @@
 			<p:commandButton value="Adicionar grupo" />
 		</p:panelGrid>
 
-		<p:dataTable value="#{pesquisaClientesBean.produtosFiltrados}"
-			var="grupo" style="margin-top: 5px"
-			emptyMessage="Nenhum produto encontrado!" rows="5" paginator="true"
-			paginatorAlwaysVisible="false" paginatorPosition="bottom">
+		<p:dataTable value="#{cadastroUsuarioBean.grupos}" var="grupo"
+			style="margin-top: 5px" emptyMessage="Nenhum produto encontrado!"
+			rows="5" paginator="true" paginatorAlwaysVisible="false"
+			paginatorPosition="bottom">
 
 			<p:column headerText="Grupo">
 				<h:outputText value="Administrador" />

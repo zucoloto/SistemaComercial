@@ -10,17 +10,17 @@ import javax.inject.Named;
 @RequestScoped
 public class PesquisaClientesBean {
 
-	private List<Integer> produtosFiltrados;
+	private List<Integer> clientesFiltrados;
 
 	public PesquisaClientesBean() {
-		produtosFiltrados = new ArrayList<>();
+		clientesFiltrados = new ArrayList<>();
 		for (int i = 0; i < 50; i++) {
-			produtosFiltrados.add(i);
+			clientesFiltrados.add(i);
 		}
 	}
 
-	public List<Integer> getProdutosFiltrados() {
-		return produtosFiltrados;
+	public List<Integer> getClientesFiltrados() {
+		return clientesFiltrados;
 	}
 
 }

@@ -11,10 +11,13 @@
 		<h:form>
 			<h1>Novo Cliente</h1>
 
+			<p:messages autoUpdate="true" closable="true" />
+
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
 					<p:button value="Novo" outcome="/clientes/CadastrarCliente" />
-					<p:commandButton value="Salvar" id="botaoSalvar" />
+					<p:commandButton value="Salvar" id="botaoSalvar"
+						action="#{cadastroClienteBean.salvar}" />
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
@@ -26,48 +29,53 @@
 				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo"
 				styleClass="panel-sem-bordas">
 
-				<p:outputLabel value="Nome:" for="nome" />
-				<p:inputText id="nome" size="60" maxlength="80" required="true" />
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" size="60" maxlength="100"
+					value="#{cadastroClienteBean.cliente.nomeCliente}" />
 
-				<p:outputLabel value="Tipo:" for="tipo" />
-				<p:selectOneRadio id="tipo" required="true">
+				<p:outputLabel value="Tipo" for="tipo" />
+				<p:selectOneRadio id="tipo"
+					value="#{cadastroClienteBean.cliente.tipo}">
 					<f:selectItem itemLabel="Física" />
 					<f:selectItem itemLabel="Jurídica" />
 				</p:selectOneRadio>
 
-				<p:outputLabel value="CNPJ:" for="cnpj" />
-				<p:inputMask id="cnpj" size="20" mask="99.999.999/9999-99" />
+				<p:outputLabel value="CNPJ" for="cnpj" />
+				<p:inputMask id="cnpj" size="20" mask="99.999.999/9999-99"
+					value="#{cadastroClienteBean.cliente.documentoReceitaFederal}" />
 
 				<p:outputLabel value="CPF" for="cpf" />
-				<p:inputMask id="cpf" size="20" mask="999.999.999-99" />
+				<p:inputMask id="cpf" size="20" mask="999.999.999-99"
+					value="#{cadastroClienteBean.cliente.documentoReceitaFederal}" />
 
 
-				<p:outputLabel value="E-mail:" for="email" />
-				<p:inputText id="email" size="50" maxlength="50" />
+				<p:outputLabel value="E-mail" for="email" />
+				<p:inputText id="email" size="50" maxlength="255"
+					value="#{cadastroClienteBean.cliente.email}" />
 			</p:panelGrid>
 
 			<p:commandButton value="Adicionar endereço" style="margin-top: 20px"
 				onclick="PF('inclusaoEndereco').show(); return false;" />
 
 			<p:dataTable id="enderecoTable"
-				value="#{pesquisaClientesBean.produtosFiltrados}" var="endereco"
+				value="#{cadastroClienteBean.enderecos}" var="endereco"
 				style="margin-top: 5px" emptyMessage="Nenhum endereço encontrado!"
 				rows="2">
 
 				<p:column headerText="Logradouro">
-					<h:outputText value="SQN 306 - Bloco 'B'" />
+					<h:outputText value="#{endereco.logradouro}" />
 				</p:column>
 
 				<p:column headerText="Número" style="width: 50px">
-					<h:outputText value="123456" />
+					<h:outputText value="#{endereco.numero}" />
 				</p:column>
 
 				<p:column headerText="Complemento" style="width: 150px">
-					<h:outputText value="Apartamento 605" />
+					<h:outputText value="#{endereco.complemento}" />
 				</p:column>
 
 				<p:column headerText="CEP" style="text-align: center; width: 80px">
-					<h:outputText value="70745-020" />
+					<h:outputText value="#{endereco.cep}" />
 				</p:column>
 
 				<p:column headerText="Cidade/UF" style="width: 300px">
@@ -94,31 +102,33 @@
 			<p:dialog header="Incluisão de endereço" widgetVar="inclusaoEndereco"
 				modal="true" resizable="false">
 				<h:panelGroup id="inclusaoPanel">
-					<p:messages />
+
+					<p:messages autoUpdate="true" closable="true" />
 
 					<h:panelGrid columns="2" style="width: 100%; margin-top: 0px"
 						columnClasses="rotulo, campo" styleClass="panel-sem-bordas">
-						<p:outputLabel value="Logradouro:" />
-						<p:inputText size="60" maxlength="80" />
+						<p:outputLabel value="Logradouro" />
+						<p:inputText size="60" maxlength="150" />
 
-						<p:outputLabel value="Número:" />
-						<p:inputText size="10" maxlength="10" />
+						<p:outputLabel value="Número" />
+						<p:inputText size="10" maxlength="20" />
 
 						<p:outputLabel value="Complemento" />
-						<p:inputText size="30" maxlength="30" />
+						<p:inputText size="50" maxlength="100" />
 
 						<p:outputLabel value="CEP" />
-						<p:inputMask size="10" maxlength="8" mask="99999-99" />
+						<p:inputMask size="10" maxlength="9" mask="99999-999" />
 
 						<p:outputLabel value="Cidade" />
 						<h:panelGroup>
-							<p:inputText size="40" maxlength="40" />
+							<p:inputText size="40" maxlength="70" />
 							<p:outputLabel value="UF" style="margin-left: 20px" />
 							<p:inputText size="5" maxlength="2" style="margin-left: 10px" />
 						</h:panelGroup>
 					</h:panelGrid>
 
-					<p:commandButton value="Incluir" action="#"
+					<p:commandButton value="Incluir"
+						action="#{cadastroClienteBean.adicionarEndereco}"
 						update="enderecoTable inclusaoPanel" icon="ui-icon-check"
 						oncomplete="PF('inclusaoEndereco').hide();" />
 				</h:panelGroup>
