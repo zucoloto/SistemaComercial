@@ -39,5 +39,6 @@ public class ClienteEndereco {
 		manager.persist(cliente);
 
 		trx.commit();
+		manager.close();
 	}
 }

@@ -62,5 +62,6 @@ public class PedidoItens {
 		manager.persist(pedido);
 
 		trx.commit();
+		manager.close();
 	}
 }

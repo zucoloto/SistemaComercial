@@ -47,5 +47,6 @@ public class ProdutoCategoria {
 		manager.persist(produto);
 
 		trx.commit();
+		manager.close();
 	}
 }

@@ -32,5 +32,6 @@ public class UsuarioGrupo {
 		manager.persist(usuario);
 
 		trx.commit();
+		manager.close();
 	}
 }

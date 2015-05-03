@@ -18,6 +18,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import br.com.sistema.validation.SKU;
+
 @Entity
 @Table(name = "produto")
 public class Produto implements Serializable {
@@ -57,6 +59,7 @@ public class Produto implements Serializable {
 	}
 
 	@NotBlank
+	@SKU
 	public String getSku() {
 		return sku;
 	}
@@ -86,7 +89,7 @@ public class Produto implements Serializable {
 		this.quantidadeEstoque = quantidadeEstoque;
 	}
 
-	@NotNull
+	//@NotNull
 	public Categoria getCategoria() {
 		return categoria;
 	}
