@@ -1,4 +1,4 @@
-package br.com.sistema.service;
+package br.com.sistema.model.service.exception;
 
 public class NegocioException extends RuntimeException {
 

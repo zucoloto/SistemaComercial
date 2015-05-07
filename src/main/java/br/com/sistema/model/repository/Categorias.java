@@ -20,7 +20,15 @@ public class Categorias implements Serializable {
 	}
 
 	public List<Categoria> buscarCategoriaRaiz() {
-		return em.createQuery("from Categoria", Categoria.class)
+		return em.createQuery(
+				"from Categoria where categoriaPai is null order by descricao",
+				Categoria.class).getResultList();
+	}
+
+	public List<Categoria> subcategoriasDe(Categoria categoriaPai) {
+		return em
+				.createQuery("from Categoria where categoriaPai = :raiz order by descricao",
+						Categoria.class).setParameter("raiz", categoriaPai)
 				.getResultList();
 	}
 }

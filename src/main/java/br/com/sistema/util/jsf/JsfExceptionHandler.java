@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ExceptionQueuedEvent;
 import javax.faces.event.ExceptionQueuedEventContext;
 
-import br.com.sistema.service.NegocioException;
+import br.com.sistema.model.service.exception.NegocioException;
 
 public class JsfExceptionHandler extends ExceptionHandlerWrapper {
 
