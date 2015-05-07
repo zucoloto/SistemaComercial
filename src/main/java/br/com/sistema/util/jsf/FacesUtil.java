@@ -21,4 +21,8 @@ public class FacesUtil {
 								message));
 	}
 
+	public static void addInfoMessage(String message) {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, message, message));
+	}
 }
