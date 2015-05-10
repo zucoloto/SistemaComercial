@@ -28,6 +28,10 @@ public class Produtos implements Serializable {
 		return em.merge(produto);
 	}
 
+	public Produto buscarPorId(Long id) {
+		return em.find(Produto.class, id);
+	}
+
 	public Produto porSku(String sku) {
 		try {
 			return em

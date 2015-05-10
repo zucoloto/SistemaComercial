@@ -23,10 +23,10 @@ public class CadastroProdutoBean implements Serializable {
 
 	@Inject
 	private Categorias categorias;
-	
+
 	@Inject
-	private CadastroProdutoService cadastroProdutoService; 
-	
+	private CadastroProdutoService cadastroProdutoService;
+
 	private Produto produto;
 	private Categoria categoriaPai;
 	private List<Categoria> categoriaRaiz;
@@ -39,9 +39,13 @@ public class CadastroProdutoBean implements Serializable {
 	public void init() {
 		if (FacesUtil.isNotPostback()) {
 			categoriaRaiz = categorias.buscarCategoriaRaiz();
+
+			if (this.categoriaPai != null) {
+				carregarSubcategorias();
+			}
 		}
 	}
-	
+
 	public void carregarSubcategorias() {
 		subcategorias = categorias.subcategoriasDe(categoriaPai);
 	}
@@ -51,16 +55,28 @@ public class CadastroProdutoBean implements Serializable {
 		categoriaPai = null;
 		subcategorias = new ArrayList<>();
 	}
-	
+
 	public void salvar() {
 		this.produto = cadastroProdutoService.salvar(this.produto);
 		limpar();
-		
+
 		FacesUtil.addInfoMessage("Produto salvo com sucesso!");
+	}
+
+	public boolean isEditando() {
+		return this.produto.getId() != null;
 	}
 
 	public Produto getProduto() {
 		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+
+		if (this.produto != null) {
+			this.categoriaPai = this.produto.getCategoria().getCategoriaPai();
+		}
 	}
 
 	@NotNull
