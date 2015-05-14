@@ -29,6 +29,7 @@ public class CadastroProdutoBean implements Serializable {
 
 	private Produto produto;
 	private Categoria categoriaPai;
+
 	private List<Categoria> categoriaRaiz;
 	private List<Categoria> subcategorias;
 
@@ -79,6 +80,10 @@ public class CadastroProdutoBean implements Serializable {
 		}
 	}
 
+	public List<Categoria> getCategoriaRaiz() {
+		return categoriaRaiz;
+	}
+
 	@NotNull
 	public Categoria getCategoriaPai() {
 		return categoriaPai;
@@ -86,10 +91,6 @@ public class CadastroProdutoBean implements Serializable {
 
 	public void setCategoriaPai(Categoria categoriaPai) {
 		this.categoriaPai = categoriaPai;
-	}
-
-	public List<Categoria> getCategoriaRaiz() {
-		return categoriaRaiz;
 	}
 
 	public List<Categoria> getSubcategorias() {

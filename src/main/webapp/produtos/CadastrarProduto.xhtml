@@ -10,7 +10,8 @@
 	<ui:define name="corpo">
 
 		<f:metadata>
-			<o:viewParam name="produto" value="#{cadastroProdutoBean.produto}" />
+			<f:viewParam name="produto" value="#{cadastroProdutoBean.produto}" />
+			<!-- <f:viewAction action="#{cadastroProdutoBean.init}" /> -->
 			<f:event listener="#{cadastroProdutoBean.init}" type="preRenderView" />
 		</f:metadata>
 
