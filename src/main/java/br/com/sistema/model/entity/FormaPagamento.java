@@ -2,9 +2,12 @@ package br.com.sistema.model.entity;
 
 public enum FormaPagamento {
 
-	DINHEIRO("Dinheiro"), CARTAO_CREDITO("Cartão de Crédito"), CARTAO_DEBITO(
-			"Cartão de Débito"), CHEQUE("Cheque"), BOLETO_BANCARIO(
-			"Boleto Bancário"), DEPOSITO_BANCARIO("Depósito Bancário");
+	DINHEIRO("Dinheiro"), 
+	CARTAO_CREDITO("Cartão de Crédito"), 
+	CARTAO_DEBITO("Cartão de Débito"),
+	CHEQUE("Cheque"), 
+	BOLETO_BANCARIO("Boleto Bancário"),
+	DEPOSITO_BANCARIO("Depósito Bancário");
 
 	private String descricao;
 

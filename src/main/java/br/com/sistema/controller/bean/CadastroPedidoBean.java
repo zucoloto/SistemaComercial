@@ -1,8 +1,6 @@
 package br.com.sistema.controller.bean;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -17,13 +15,15 @@ public class CadastroPedidoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Pedido pedido;
-	private List<Integer> itens;
 
 	public CadastroPedidoBean() {
+		limpar();
+		
+	}
+
+	private void limpar() {
 		pedido = new Pedido();
 		pedido.setEnderecoEntrega(new EnderecoEntrega());
-		itens = new ArrayList<>();
-		itens.add(1);
 	}
 
 	public void salvar() {
@@ -32,10 +32,6 @@ public class CadastroPedidoBean implements Serializable {
 
 	public Pedido getPedido() {
 		return pedido;
-	}
-
-	public List<Integer> getItens() {
-		return itens;
 	}
 
 }
