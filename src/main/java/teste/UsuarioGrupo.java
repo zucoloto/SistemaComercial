@@ -19,13 +19,13 @@ public class UsuarioGrupo {
 		trx.begin();
 
 		Usuario usuario = new Usuario();
-		usuario.setNomeUsuario("Alessandro");
-		usuario.setEmail("alessandro@gmail.com");
+		usuario.setNomeUsuario("Manu");
+		usuario.setEmail("manu@gmail.com");
 		usuario.setSenha("123");
 
 		Grupo grupo = new Grupo();
-		grupo.setNomeGrupo("Administrador");
-		grupo.setDescricao("Administrador da empresa");
+		grupo.setNomeGrupo("Vendedora");
+		grupo.setDescricao("Vendedora da empresa");
 
 		usuario.getGrupos().add(grupo);
 
