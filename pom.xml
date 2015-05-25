@@ -20,6 +20,13 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<!-- API do Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
